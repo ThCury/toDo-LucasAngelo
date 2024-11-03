@@ -1,5 +1,6 @@
 package com.pedroporto.todosimple.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -41,6 +42,12 @@ public class TaskService {
         newObj.setDescription(obj.getDescription());
         return this.taskRepository.save(newObj);
 
+    }
+
+    public List<Task> findAllByUserId(Long userId) {
+
+        List<Task> tasks = this.taskRepository.findByUser_Id(userId);
+        return tasks;
     }
 
     public void delete(Long id) {
